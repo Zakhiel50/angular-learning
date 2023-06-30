@@ -5,11 +5,8 @@ import { HousingLocation } from './housinglocation';
   providedIn: 'root'
 })
 export class HousingService {
-submitApplication(firstName: string, lastName: string, email: string) {
-  console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
-}
 
-  housingLocationList: HousingLocation[] = [
+  protected housingLocationList: HousingLocation[] = [
     {
       id: 0,
       name: 'Acme Fresh Start Housing',
@@ -115,9 +112,12 @@ submitApplication(firstName: string, lastName: string, email: string) {
   getAllHousingLocations(): HousingLocation[] {
     return this.housingLocationList;
   }
-  
+
   getHousingLocationById(id: number): HousingLocation | undefined {
     return this.housingLocationList.find(housingLocation => housingLocation.id === id);
   }
-  constructor() { }
+
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
+  }
 }
